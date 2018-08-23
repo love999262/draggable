@@ -16,7 +16,6 @@ const config = {
         library: 'Draggable',
         libraryExport: 'default',
     },
-    devtool: (ENV === 'dev' || ENV === 'watch') ? 'eval-source-map' : 'inline-source-map',
     resolve: {
         extensions: ['.tsx', '.ts', '.jsx', '.js'],
     },
@@ -44,6 +43,7 @@ const config = {
     ],
 };
 if (ENV === 'development') {
+    config.devtool = 'source-map';
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
     config.devServer = {
         contentBase: path.resolve(__dirname, 'demo'),
