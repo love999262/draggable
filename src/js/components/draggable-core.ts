@@ -23,7 +23,10 @@ class DraggableCore {
     constructor(config: ConfigInterface) {
         this.config = config;
         this.container = this.config.container;
-        this.container.style.cssText += `cursor: ${this.config.cursor}`;
+        if (!this.config.userSelector) {
+            this.container.style.cssText += ';user-select: none';
+        }
+        this.container.style.cssText += `;cursor: ${this.config.cursor}`;
         this.registerEvent();
     }
     registerEvent() {
@@ -62,18 +65,18 @@ class DraggableCore {
         if (this.dragging) {
             switch (this.config.axis) {
                 case 'both':
-                    this.container.style.cssText += `transform: translate(${this.dragData.deltaX}px, ${this.dragData.deltaY}px)`;
+                    this.container.style.cssText += `;transform: translate(${this.dragData.deltaX}px, ${this.dragData.deltaY}px)`;
                     break;
                 case 'x':
-                    this.container.style.cssText += `transform: translate(${this.dragData.deltaX}px, ${this.translateY}px)`;
+                    this.container.style.cssText += `;transform: translate(${this.dragData.deltaX}px, ${this.translateY}px)`;
                     break;
                 case 'y':
-                    this.container.style.cssText += `transform: translate(${this.translateX}px, ${this.dragData.deltaY}px)`;
+                    this.container.style.cssText += `;transform: translate(${this.translateX}px, ${this.dragData.deltaY}px)`;
                     break;
                 case 'none':
                     break;
                 default:
-                    this.container.style.cssText += `transform: translate(${this.dragData.deltaX}px, ${this.dragData.deltaY}px)`;
+                    this.container.style.cssText += `;transform: translate(${this.dragData.deltaX}px, ${this.dragData.deltaY}px)`;
                     break;
             }
             console.log(data);

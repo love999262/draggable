@@ -22,10 +22,12 @@ or
 | selector             | '.drag'                          | the root node
 | axis                 | 'both'/'x'/'                     | draggable axis
 | cursor               | 'move'                           | the cursor style of selector
+| userSelect           | boolean                          | userSelect of element
 ```javascript
     const drag = new Draggable({
         selector: '#drag',
         axis: 'both',
+        userSelect: false,
         cursor: 'move',
     });
 ```

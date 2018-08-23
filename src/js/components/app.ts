@@ -4,6 +4,7 @@ export interface ConfigInterface {
     selector: string;
     axis?: 'both' | 'x' | 'y' | 'none';
     cursor?: string;
+    userSelector?: boolean;
     container?: HTMLElement;
 }
 class Draggable {
@@ -12,12 +13,13 @@ class Draggable {
         this.config = utils.extend({
             axis: 'both',
             cursor: 'move',
+            userSelect: false,
         }, config);
         const nodeList = utils.$(this.config.selector);
-        nodeList.forEach((item: HTMLElement) => {
+        Array.prototype.forEach.call(nodeList, (item: HTMLElement) => {
             const config = utils.extend(this.config, {
-                    container: item,
-                });
+                container: item,
+            });
             new DraggableCore(config);
         });
     }
