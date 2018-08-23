@@ -1,6 +1,6 @@
 const utils = {
-    $(selector: string): HTMLElement {
-        return document.querySelector(selector);
+    $(selector: string): NodeList {
+        return document.querySelectorAll(selector);
     },
     extend(target: any, ...args: any[]) {
         const result = target || {};

@@ -33,16 +33,15 @@
 </head>
 
 <body>
-    <div class="wrap">
-            <div class="div1">both</div>
-            <div class="div2">only x axis</div>
-            <div class="div3">only y axis</div>
-    </div>
+    <div class="div1">both</div>
+    <div class="div2">only x axis</div>
+    <div class="div3">only y axis</div>
     <script src="./../dist/draggable.js"></script>
     <script src="/draggable.js"></script>
     <script>
         const drag = new Draggable({
             selector: '.div1',
+            axis: 'x',
         });
         const drag2 = new Draggable({
             selector: '.div2',

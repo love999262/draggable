@@ -24,6 +24,15 @@ or
 | cursor               | 'move'                           | the cursor style of selector
 ```javascript
     const drag = new Draggable({
+        selector: '#drag',
+        axis: 'both',
+        cursor: 'move',
+    });
+```
+or you can register nodelist by pass class or element selector
+
+```javascript
+    const drag = new Draggable({
         selector: '.drag',
         axis: 'both',
         cursor: 'move',

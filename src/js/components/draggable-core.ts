@@ -22,7 +22,7 @@ class DraggableCore {
     translateY: number;
     constructor(config: ConfigInterface) {
         this.config = config;
-        this.container = utils.$(config.selector);
+        this.container = this.config.container;
         this.container.style.cssText += `cursor: ${this.config.cursor}`;
         this.registerEvent();
     }

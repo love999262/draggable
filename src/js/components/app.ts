@@ -4,16 +4,22 @@ export interface ConfigInterface {
     selector: string;
     axis?: 'both' | 'x' | 'y' | 'none';
     cursor?: string;
+    container?: HTMLElement;
 }
 class Draggable {
-    draggableCore: DraggableCore;
     config: ConfigInterface;
     constructor(config: ConfigInterface) {
         this.config = utils.extend({
             axis: 'both',
             cursor: 'move',
         }, config);
-        this.draggableCore = new DraggableCore(this.config);
+        const nodeList = utils.$(this.config.selector);
+        nodeList.forEach((item: HTMLElement) => {
+            const config = utils.extend(this.config, {
+                    container: item,
+                });
+            new DraggableCore(config);
+        });
     }
 }
 export default Draggable;
