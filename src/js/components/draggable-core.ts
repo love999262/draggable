@@ -1,0 +1,80 @@
+import utils from './../utils/utils';
+import events from './../utils/event';
+import { ConfigInterface } from './app';
+
+interface DargDataInterface {
+    // x - deltaX === lastX
+    node?: HTMLElement;
+    x?: number;
+    y?: number;
+    deltaX?: number;
+    deltaY?: number;
+    lastX?: number;
+    lastY?: number;
+}
+
+class DraggableCore {
+    config: ConfigInterface;
+    container: HTMLElement;
+    dragging: boolean = false;
+    dragData: DargDataInterface = {};
+    translateX: number;
+    translateY: number;
+    constructor(config: ConfigInterface) {
+        this.config = config;
+        this.container = utils.$(config.selector);
+        this.container.style.cssText += `cursor: ${this.config.cursor}`;
+        this.registerEvent();
+    }
+    registerEvent() {
+        this.container.addEventListener(events.start, (e: MouseEvent) => {
+            this.onDragStart(e, this.dragData);
+        });
+        document.addEventListener(events.move, (e: MouseEvent) => {
+            this.dragData.deltaX = e.clientX - this.dragData.x;
+            this.dragData.deltaY = e.clientY - this.dragData.y;
+            this.onDrag(e, this.dragData);
+        });
+        document.addEventListener(events.stop, (e: MouseEvent) => {
+            this.dragData.lastX = e.clientX;
+            this.dragData.lastY = e.clientY;
+            this.onDragStop(e, this.dragData);
+        });
+    }
+    onDragStart(e: MouseEvent, data?: DargDataInterface) {
+        this.dragging = true;
+        const trans = getComputedStyle(this.container).transform.split(',');
+        this.translateX = Number(trans[trans.length - 2]);
+        this.translateY = Number(trans[trans.length - 1].split(')')[0]);
+        this.dragData.x = e.clientX - this.translateX;
+        this.dragData.y = e.clientY - this.translateY;
+    }
+    onDrag(e: MouseEvent, data?: DargDataInterface) {
+        if (this.dragging) {
+            switch (this.config.axis) {
+                case 'both':
+                    this.container.style.cssText += `transform: translate(${this.dragData.deltaX}px, ${this.dragData.deltaY}px)`;
+                    break;
+                case 'x':
+                    this.container.style.cssText += `transform: translate(${this.dragData.deltaX}px, ${this.translateY}px)`;
+                    break;
+                case 'y':
+                    this.container.style.cssText += `transform: translate(${this.translateX}px, ${this.dragData.deltaY}px)`;
+                    break;
+                case 'none':
+                    break;
+                default:
+                    this.container.style.cssText += `transform: translate(${this.dragData.deltaX}px, ${this.dragData.deltaY}px)`;
+                    break;
+            }
+
+
+        }
+    }
+    onDragStop(e: MouseEvent, data?: DargDataInterface) {
+        this.dragData.deltaX = this.dragData.x - this.dragData.lastX;
+        this.dragData.deltaY = this.dragData.y - this.dragData.lastY;
+        this.dragging = false;
+    }
+}
+export default DraggableCore;

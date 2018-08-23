@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>draggable</title>
     <style>
-        .dragger {
+        .div1,
+        .div2,
+        .div3 {
+            transform: translate(100px, 100px);
+            float: left;
             width: 100px;
             height: 100px;
             border: 1px solid #000;
             text-align: center;
             vertical-align: middle;
         }
+
+        .div2 {
+            transform: translate(200px, 100px);
+            border-color: red;
+        }
+
+        .div3 {
+            transform: translate(300px, 100px);
+            border-color: blue;
+        }
     </style>
 </head>
+
 <body>
-    <div class="dragger">dragger</div>
-    <script src="./dist/draggable.js"></script>
+    <div class="wrap">
+            <div class="div1">both</div>
+            <div class="div2">only x axis</div>
+            <div class="div3">only y axis</div>
+    </div>
+    <script src="./../dist/draggable.js"></script>
+    <script src="/draggable.js"></script>
+    <script>
+        const drag = new Draggable({
+            selector: '.div1',
+        });
+        const drag2 = new Draggable({
+            selector: '.div2',
+            axis: 'x',
+        });
+        const drag3 = new Draggable({
+            selector: '.div3',
+            axis: 'y',
+        });
+    </script>
 </body>
+
 </html>
