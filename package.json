@@ -1,6 +1,6 @@
 {
   "name": "kaguya-draggable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A js plugin to make any element able to be dragged.",
   "main": "dist/draggable.js",
   "types": "dist/index.d.ts",
