@@ -15,6 +15,5 @@ class Draggable {
         }, config);
         this.draggableCore = new DraggableCore(this.config);
     }
-    
 }
 export default Draggable;

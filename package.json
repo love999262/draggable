@@ -1,6 +1,6 @@
 {
   "name": "kaguya-draggable",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A js plugin to make any element able to be dragged.",
   "main": "dist/draggable.js",
   "types": "dist/index.d.ts",
@@ -31,8 +31,5 @@
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
-  },
-  "dependencies": {
-    "kaguya-clock": "^1.0.7"
   }
 }
