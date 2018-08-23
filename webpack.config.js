@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ENV = process.env.NODE_ENV;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
     mode: ENV,
@@ -33,7 +33,12 @@ const config = {
     watchOptions: {
         ignored: [/node_modules/]
     },
-    plugins: [],
+    plugins: [
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, './index.d.ts'),
+            to: path.resolve(__dirname, './dist/index.d.ts'),
+        }])
+    ],
 };
 if (ENV === 'development') {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());

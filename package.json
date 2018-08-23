@@ -2,7 +2,8 @@
   "name": "kaguya-draggable",
   "version": "1.0.0",
   "description": "A js plugin to make any element able to be dragged.",
-  "main": "index.js",
+  "main": "dist/draggable.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "cross-env --env.NODE_ENV=production webpack",
     "dev": "cross-env --env.NODE_ENV=development webpack-dev-server --watch",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
     "ts-loader": "^4.5.0",
     "tslint": "^5.11.0",
