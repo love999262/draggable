@@ -12,6 +12,9 @@ const config = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'umd',
+        library: 'Draggable',
+        libraryExport: 'default',
     },
     devtool: (ENV === 'dev' || ENV === 'watch') ? 'eval-source-map' : 'inline-source-map',
     resolve: {

@@ -43,7 +43,16 @@ class DraggableCore {
     }
     onDragStart(e: MouseEvent, data?: DargDataInterface) {
         this.dragging = true;
-        const trans = getComputedStyle(this.container).transform.split(',');
+        const transStyle = getComputedStyle(this.container).transform;
+        if (transStyle === 'none') {
+            this.dragData.x = e.clientX;
+            this.dragData.y = e.clientY;
+            this.translateX = 0;
+            this.translateY = 0;
+            return;
+        }
+        const trans: any = transStyle.split(',');
+
         this.translateX = Number(trans[trans.length - 2]);
         this.translateY = Number(trans[trans.length - 1].split(')')[0]);
         this.dragData.x = e.clientX - this.translateX;
@@ -67,8 +76,7 @@ class DraggableCore {
                     this.container.style.cssText += `transform: translate(${this.dragData.deltaX}px, ${this.dragData.deltaY}px)`;
                     break;
             }
-
-
+            console.log(data);
         }
     }
     onDragStop(e: MouseEvent, data?: DargDataInterface) {

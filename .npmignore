@@ -10,3 +10,5 @@ index.html
 webpack/
 dts/
 types/
+tsconfig.json
+tslint.json
