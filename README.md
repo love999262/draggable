@@ -20,7 +20,7 @@ or
 | key                  | value                            | description  |
 | -------------------- |:--------------------------------:| ------------:|
 | selector             | '.drag'                          | the root node
-| axis                 | 'both'/'x'/'                     | draggable axis
+| axis                 | 'both'/'x'/'y'                   | draggable axis
 | cursor               | 'move'                           | the cursor style of selector
 | userSelect           | boolean                          | userSelect of element
 ```javascript
