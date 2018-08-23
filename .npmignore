@@ -7,7 +7,6 @@ webpack.config.js
 webpack.server.config.js
 yarn.lock
 index.html
-build/
 webpack/
 dts/
 types/
