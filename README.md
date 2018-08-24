@@ -40,3 +40,5 @@ or you can register nodelist by pass class or element selector
         cursor: 'move',
     });
 ```
+
+### contribute is welcome, if you want to contribute code view [CONTRIBUTING](/doc/CONTRIBUTING.md)

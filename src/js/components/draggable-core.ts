@@ -32,14 +32,17 @@ class DraggableCore {
     registerEvent() {
         this.container.addEventListener(events.start, (e: MouseEvent) => {
             e.stopPropagation();
+            e.preventDefault();
             this.onDragStart(e, this.dragData);
         });
         document.addEventListener(events.move, (e: MouseEvent) => {
+            e.preventDefault();
             this.dragData.deltaX = e.clientX - this.dragData.x;
             this.dragData.deltaY = e.clientY - this.dragData.y;
             this.onDrag(e, this.dragData);
         });
         document.addEventListener(events.stop, (e: MouseEvent) => {
+            e.preventDefault();
             this.dragData.lastX = e.clientX;
             this.dragData.lastY = e.clientY;
             this.onDragStop(e, this.dragData);
