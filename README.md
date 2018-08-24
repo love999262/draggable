@@ -23,12 +23,16 @@ or
 | axis                 | 'both'/'x'/'y'                   | draggable axis
 | cursor               | 'move'                           | the cursor style of selector
 | userSelect           | boolean                          | userSelect of element
+| callback             | function                         | get the coordinate
 ```javascript
     const drag = new Draggable({
         selector: '#drag',
         axis: 'both',
         userSelect: false,
         cursor: 'move',
+        callback: (data) => {
+            console.log(data);
+        },
     });
 ```
 or you can register nodelist by pass class or element selector

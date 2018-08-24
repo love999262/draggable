@@ -3,6 +3,7 @@ interface ConfigInterface {
     axis?: 'both' | 'x' | 'y' | 'none';
     cursor?: string;
     userSelect?: boolean;
+    callback?: () => void;
 }
 
 declare class Clock {

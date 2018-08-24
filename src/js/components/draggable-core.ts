@@ -2,7 +2,7 @@ import utils from './../utils/utils';
 import events from './../utils/event';
 import { ConfigInterface } from './app';
 
-interface DargDataInterface {
+export interface DargDataInterface {
     // x - deltaX === lastX
     node?: HTMLElement;
     x?: number;
@@ -83,6 +83,7 @@ class DraggableCore {
                     this.container.style.cssText += `;transform: translate(${this.dragData.deltaX}px, ${this.dragData.deltaY}px)`;
                     break;
             }
+            typeof this.config.callback === 'function' && this.config.callback(data);
             console.log(data);
         }
     }

@@ -51,6 +51,9 @@
         // });
         const drag = new Draggable({
             selector: '.div1',
+            callback: (data) => {
+                console.log('div1', data);
+            },
         });
         const drag2 = new Draggable({
             selector: '.div2',

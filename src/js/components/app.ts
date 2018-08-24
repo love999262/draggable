@@ -1,11 +1,13 @@
 import DraggableCore from './draggable-core';
 import utils from './../utils/utils';
+import { DargDataInterface } from './draggable-core';
 export interface ConfigInterface {
     selector: string;
     axis?: 'both' | 'x' | 'y' | 'none';
     cursor?: string;
     userSelector?: boolean;
     container?: HTMLElement;
+    callback?: (data?: DargDataInterface) => void;
 }
 class Draggable {
     config: ConfigInterface;
@@ -14,6 +16,7 @@ class Draggable {
             axis: 'both',
             cursor: 'move',
             userSelect: false,
+            callback: () => {},
         }, config);
         const nodeList = utils.$(this.config.selector);
         Array.prototype.forEach.call(nodeList, (item: HTMLElement) => {
