@@ -31,6 +31,7 @@ class DraggableCore {
     }
     registerEvent() {
         this.container.addEventListener(events.start, (e: MouseEvent) => {
+            e.stopPropagation();
             this.onDragStart(e, this.dragData);
         });
         document.addEventListener(events.move, (e: MouseEvent) => {

@@ -29,27 +29,37 @@
             transform: translate(300px, 100px);
             border-color: blue;
         }
+        .wrap {
+            width: 900px;
+            height: 500px;
+            border: 1px solid;
+        }
     </style>
 </head>
 
 <body>
-    <div class="div1">both</div>
-    <div class="div2">only x axis</div>
-    <div class="div3">only y axis</div>
+    <div class="wrap">
+        <div class="div1">both</div>
+        <div class="div2">only x axis</div>
+        <div class="div3">only y axis</div>
+    </div>
     <script src="./../dist/draggable.js"></script>
     <script src="/draggable.js"></script>
     <script>
+        // const drag = new Draggable({
+        //     selector: 'div',
+        // });
         const drag = new Draggable({
-            selector: 'div',
+            selector: '.div1',
         });
-        // const drag2 = new Draggable({
-        //     selector: '.div2',
-        //     axis: 'x',
-        // });
-        // const drag3 = new Draggable({
-        //     selector: '.div3',
-        //     axis: 'y',
-        // });
+        const drag2 = new Draggable({
+            selector: '.div2',
+            axis: 'x',
+        });
+        const drag3 = new Draggable({
+            selector: '.div3',
+            axis: 'y',
+        });
     </script>
 </body>
 
