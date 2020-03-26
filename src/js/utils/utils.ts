@@ -10,7 +10,7 @@ const utils = {
                     Object.keys(obj).forEach((key) => {
                         switch (Object.prototype.toString.call(obj[key])) {
                             case '[object Object]':
-                                obj[key] = utils.extend(result[key], obj[key]);
+                                obj[key] = this.extend(result[key], obj[key]);
                                 break;
                         }
                         result[key] = obj[key];
