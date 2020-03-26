@@ -45,7 +45,7 @@ const utils = {
             immediate: true,
             arguments: [],
         }, cof);
-        let timer: number;
+        let timer: any;
         return () => {
             if (o.immediate) {
                 o.method.apply(o.ctx, o.arguments);
